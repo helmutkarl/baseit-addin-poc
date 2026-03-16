@@ -4,124 +4,20 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Spam E-Mail an das BRZ melden</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f6f8fa;
-      margin: 0;
-      padding: 0;
-      color: #222;
-    }
-    .wrap {
-      padding: 18px;
-    }
-    .card {
-      background: #fff;
-      border: 1px solid #d0d7de;
-      border-radius: 8px;
-      padding: 16px;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-    }
-    .header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 16px;
-    }
-    .header img {
-      width: 32px;
-      height: 32px;
-    }
-    .title {
-      font-size: 16px;
-      font-weight: 700;
-      margin: 0;
-    }
-    .subtitle {
-      font-size: 12px;
-      color: #666;
-      margin: 2px 0 0 0;
-    }
-    .status {
-      background: #fff8c5;
-      border: 1px solid #e3d26f;
-      border-radius: 6px;
-      padding: 10px 12px;
-      font-size: 13px;
-      margin-bottom: 14px;
-    }
-    .meta {
-      font-size: 13px;
-      margin-bottom: 14px;
-      line-height: 1.6;
-    }
-    .meta b {
-      display: inline-block;
-      width: 95px;
-    }
-    .btn {
-      display: inline-block;
-      background: #0f6cbd;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      padding: 10px 14px;
-      font-size: 13px;
-      cursor: pointer;
-    }
-    .result {
-      margin-top: 14px;
-      font-size: 13px;
-      padding: 10px 12px;
-      background: #e7f3ff;
-      border: 1px solid #9cc7f5;
-      border-radius: 6px;
-      display: none;
-    }
-    .footer {
-      margin-top: 14px;
-      font-size: 12px;
-      color: #666;
-    }
-  </style>
+  <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
 </head>
 <body>
-  <div class="wrap">
-    <div class="card">
-      <div class="header">
-        <img src="https://spamsubmissionplugin.fortimailcloud.com/assets/Fortinet64.png" alt="Icon">
-        <div>
-          <p class="title">Spam E-Mail an das BRZ melden</p>
-          <p class="subtitle">BaseIT POC</p>
-        </div>
-      </div>
-
-      <div class="status">
-        Verdächtige Nachricht erkannt. Eine Analyse kann gestartet werden.
-      </div>
-
-      <div class="meta">
-        <div><b>Status:</b> Add-in aktiv</div>
-        <div><b>Quelle:</b> Benutzerseitig geladenes Manifest</div>
-        <div><b>Zweck:</b> Demonstration des Trust-Risikos</div>
-      </div>
-
-      <button class="btn" onclick="showResult()">Nachricht analysieren</button>
-
-      <div class="result" id="resultBox">
-        POC erfolgreich: Dieses Add-in wurde per Datei eingebunden und erscheint für Benutzer wie eine legitime interne Erweiterung.
-      </div>
-
-      <div class="footer">
-        Diese Demonstration ist harmlos und dient ausschließlich dem Nachweis des Findings.
-      </div>
-    </div>
-  </div>
+  <h3>Spam E-Mail an das BRZ melden</h3>
+  <p>BaseIT POC – benutzerseitig geladenes Add-in.</p>
+  <button id="btn">Nachricht analysieren</button>
+  <div id="ok" style="display:none; margin-top:12px;">POC erfolgreich geladen.</div>
 
   <script>
-    function showResult() {
-      document.getElementById('resultBox').style.display = 'block';
-    }
+    Office.onReady(() => {
+      document.getElementById('btn').addEventListener('click', () => {
+        document.getElementById('ok').style.display = 'block';
+      });
+    });
   </script>
 </body>
 </html>
